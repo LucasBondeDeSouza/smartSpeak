@@ -3,7 +3,7 @@ import gemini_img from "../../assets/gemini.svg";
 
 export default ({ addMessageToHistory, clearChatHistory, input, setInput }) => {
 
-  const GOOGLE_API_KEY = 'AIzaSyCkrGwZmWzVK-fWP8dBBIJT9NEMPKKW3eI';
+  const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
   const API_REQUEST_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${GOOGLE_API_KEY}`;
 
   const handleSubmit = async (e) => {
