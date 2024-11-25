@@ -37,7 +37,7 @@ export default () => {
     <div>
       <Navbar toggleTheme={toggleTheme} theme={theme} />
       <Header chatHistory={chatHistory} setInput={setInput} />
-      <Chat theme={theme} chatHistory={chatHistory} />
+      <Chat chatHistory={chatHistory} />
       <PromptForm
         addMessageToHistory={addMessageToHistory}
         clearChatHistory={clearChatHistory}
