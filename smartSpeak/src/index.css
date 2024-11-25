@@ -18,6 +18,8 @@
 
     --button-hover-color: #2f3030;
 
+    --message-color: #444746;
+
     --text-color: #fff;
     --text-secondary-color: #D8D8D8;
     --heading-secondary-color: #444746;
@@ -33,6 +35,8 @@
     --focus-hover-color: #E1E6ED;
 
     --button-hover-color: #E9ECF1;
+
+    --message-color: #F3F3F3;
 
     --text-color: #000;
     --text-secondary-color: #4D4D4D;
@@ -62,6 +66,12 @@ body.hide-header .header {
     align-items: center;
     justify-content: space-between;
     padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-color);
+    z-index: 1000;
 }
 
 .navbar__logo {
@@ -88,7 +98,7 @@ body.hide-header .header {
 }
 
 .header {
-    margin-top: 6vh;
+    margin-top: 20vh;
 }
 
 .header__title h1 {
@@ -235,18 +245,15 @@ body.hide-header .header {
 }
 
 .chats {
+    margin-top: 10vh;
     padding: 2rem 1rem 10rem;
     max-height: 100%;
     overflow-y: auto;
     scrollbar-color: #999 transparent;
 }
 
-.chats .message--incoming {
+.chats .message {
     margin-top: 1.5rem;
-}
-
-.chats .message--outgoing:not(:first-child) {
-    margin-top: 40px;
 }
 
 .chats .message__content {
@@ -256,10 +263,20 @@ body.hide-header .header {
     width: 100%;
 }
 
+.chats .outgoing .message__content {
+    flex-direction: row-reverse;
+}
+
 .chats .message__text {
     color: var(--text-color);
     white-space: pre-wrap;
-    margin-top: 10px;
+    margin-top: 15px;
+}
+
+.chats .outgoing .message__text {
+    background-color: var(--message-color);
+    padding: 10px 15px;
+    border-radius: 10px;
 }
 
 .hide {
