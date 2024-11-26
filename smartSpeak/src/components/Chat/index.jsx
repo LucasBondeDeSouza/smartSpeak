@@ -1,7 +1,7 @@
 import React from "react";
+import { Typewriter } from "react-simple-typewriter";
 
 export default ({ chatHistory }) => {
-
     const formatText = (text) => {
         // Usa expressão regular para identificar texto entre '**' e substitui por <strong>
         const parts = text.split(/(\*\*.*?\*\*)/); // Divide o texto nos trechos que contêm '**'
@@ -13,6 +13,11 @@ export default ({ chatHistory }) => {
             )
         );
     };
+
+    // Encontrar o índice da última mensagem do tipo "incoming"
+    const lastIncomingIndex = chatHistory
+        .map((chat) => chat.type)
+        .lastIndexOf("incoming");
 
     return (
         <section className="chats">
@@ -26,7 +31,31 @@ export default ({ chatHistory }) => {
                                 alt="Avatar"
                             />
                         )}
-                        <p className="message__text">{formatText(chat.text)}</p>
+
+                        <p className="message__text">
+                            {index === lastIncomingIndex ? (
+                                // Aplica o efeito Typewriter apenas na última mensagem "incoming"
+                                <Typewriter
+                                    words={[
+                                        formatText(chat.text)
+                                            .map((part) =>
+                                                typeof part === "string"
+                                                    ? part
+                                                    : part.props.children
+                                            )
+                                            .join(""),
+                                    ]}
+                                    loop={1} // Exibe o texto apenas uma vez
+                                    cursor
+                                    cursorStyle=""
+                                    typeSpeed={50}
+                                    deleteSpeed={0}
+                                    delaySpeed={500}
+                                />
+                            ) : (
+                                formatText(chat.text) // Exibe o texto diretamente para outras mensagens
+                            )}
+                        </p>
                     </div>
                 </div>
             ))}
