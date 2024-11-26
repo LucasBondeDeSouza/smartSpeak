@@ -48,7 +48,7 @@ export default ({ chatHistory }) => {
                                     loop={1} // Exibe o texto apenas uma vez
                                     cursor
                                     cursorStyle=""
-                                    typeSpeed={50}
+                                    typeSpeed={30}
                                     deleteSpeed={0}
                                     delaySpeed={500}
                                 />
