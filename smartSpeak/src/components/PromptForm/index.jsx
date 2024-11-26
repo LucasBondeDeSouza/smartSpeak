@@ -42,8 +42,7 @@ export default ({ addMessageToHistory, clearChatHistory, input, setInput }) => {
     <section className="prompt">
       <form className="prompt__form" onSubmit={handleSubmit}>
         <div className="prompt__input-wrapper">
-          <input
-            type="text"
+          <textarea
             placeholder="Insira uma mensagem aqui"
             className="prompt__form-input"
             value={input}
